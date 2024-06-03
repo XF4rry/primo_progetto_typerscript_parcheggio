@@ -27,29 +27,38 @@ export class ParcheggiController {
     // faccio il return della lunghezza dell'array perchè il secondo punto mi chiede soltanto di restituire il numero dei veicoli presenti (non i dati)
     return datiParcheggiate.length;
   }
+
+
   addVeicolo(targa: string) : boolean {
-    if(this.getNumeroVeicoliPresenti() < this.db.parcheggio.capienza && this.db.parcheggio.veicoli.find((v) => v.targa == targa) == undefined) {
-    // utilizzo il metodo per evitare ripetizione di codice e controllo la capienza e se la targa non è già presente
+    const numeroVeicoliPresenti = this.getNumeroVeicoliPresenti();
+    const veicoloEsistente = this.db.parcheggio.veicoli.find((v) => v.targa === targa);
+    if (numeroVeicoliPresenti < this.db.parcheggio.capienza && !veicoloEsistente) {
       this.db.parcheggio.veicoli.push(new Veicolo(targa));
-    return true;
+      return true;
     } else {
       return false;
     }
   }
 
   getVeicoloByTarga(targa: string): Veicolo {
-    let veicolo = this.db.parcheggio.veicoli.find((v) => v.targa === targa);
-    if( veicolo == undefined ) {
+    const veicolo = this.db.parcheggio.veicoli.find((v) => v.targa === targa);
+    if (!veicolo) {
       throw new Error('Veicolo non trovato');
-    } else {
-      return veicolo;
     }
+    return veicolo;
   }
 
   calcolaImporto(veicolo: Veicolo): number {
-    veicolo.dateExit = new Date();
-    veicolo.importo = (veicolo.dateExit.getTime() - veicolo.dateEntry.getTime()) * this.db.parcheggio.tariffaOraria;
-    //this.db.parcheggio.veicoli.slice(this.db.parcheggio.veicoli.indexOf(veicolo), 1);
+    const now = new Date();
+    const exitMinutes = now.getMinutes() - veicolo.dateEntry.getMinutes();
+    const exitBlocks = Math.floor(exitMinutes / 15);
+    const exitBlocksRounded = exitBlocks * 15;
+    const totalMinutes = veicolo.dateEntry.getMinutes() + exitBlocksRounded;
+    const totalHours = veicolo.dateEntry.getHours() + Math.floor(totalMinutes / 60);
+    const totalMinutesInHours = totalMinutes % 60;
+    const exitDate = new Date(veicolo.dateEntry.getFullYear(), veicolo.dateEntry.getMonth(), veicolo.dateEntry.getDate(), totalHours, totalMinutesInHours);
+    veicolo.dateExit = exitDate;
+    veicolo.importo = (exitDate.getTime() - veicolo.dateEntry.getTime()) * this.db.parcheggio.tariffaOraria / (60 * 1000);
     return veicolo.importo;
   }
 }
