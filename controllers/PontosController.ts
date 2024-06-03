@@ -1,6 +1,6 @@
 // importo le classi necessarie
 import { Database } from "../models/Database";
-import { Parcheggio } from "../models/Parcheggio";
+//import { Parcheggio } from "../models/Parcheggio";
 import { Veicolo } from "../models/Veicolo";
 
 export class ParcheggiController {
