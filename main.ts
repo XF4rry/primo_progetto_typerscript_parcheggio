@@ -1,5 +1,4 @@
 //entry point application for the project
+import { MainMenuView } from "./views/MainMenuView";
+MainMenuView.stampaMenu();
 
-import { MainMenu } from "./views/MainMenuView";
-
-MainMenu.stampaMenu();

@@ -1,7 +1,7 @@
 import * as rl from "readline-sync";
 import { ParcheggiController } from "../controllers/PontosController";
 
-export class MainMenu{
+export class MainMenuView{
         static stampaMenu(){
         let controller = new ParcheggiController();
         console.log("Parcheggio TS");
@@ -24,7 +24,7 @@ export class MainMenu{
                 break;
             default:
                 console.log("scelta non valida");
-                MainMenu.stampaMenu();
+                MainMenuView.stampaMenu();
         }
     }
 }
