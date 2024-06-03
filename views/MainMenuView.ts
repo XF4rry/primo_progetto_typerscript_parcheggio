@@ -3,6 +3,7 @@ import { ParcheggiController } from "../controllers/PontosController";
 
 export class MainMenuView{
         static stampaMenu(){
+        
         let controller = new ParcheggiController();
         console.log("Parcheggio TS");
         console.log("--------------------------------------------------------------------------------------------------------------------");
@@ -13,6 +14,7 @@ export class MainMenuView{
         console.log("9. Esci");
         console.log("--------------------------------------------------------------------------------------------------------------------");
         let scelta = rl.questionInt("inserire la scelta: ");
+        console.clear();
         switch(scelta){
             case 1:
                 controller.getDatiParcheggiate().forEach(element => {console.log(element.targa + " entrato il: " + element.dateEntry + " e uscito il: " + element.dateExit + " con un importo di: " + element.importo + " €");});
