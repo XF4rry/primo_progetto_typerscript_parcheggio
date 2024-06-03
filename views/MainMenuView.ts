@@ -15,12 +15,15 @@ export class MainMenuView{
         let scelta = rl.questionInt("inserire la scelta: ");
         switch(scelta){
             case 1:
-                controller.getDatiParcheggiate().forEach(element => {console.log(element.targa + " entrato il: " + element.dateEntry + " e uscito il: " + element.dateExit + " con un importo di: " + element.importo + "€");});
+                controller.getDatiParcheggiate().forEach(element => {console.log(element.targa + " entrato il: " + element.dateEntry + " e uscito il: " + element.dateExit + " con un importo di: " + element.importo + " €");});
+                MainMenuView.stampaMenu();
                 break;
             case 2:
                 console.log(controller.getNumeroVeicoliPresenti());
+                MainMenuView.stampaMenu();
                 break;
             case 9:
+                
                 break;
             default:
                 console.log("scelta non valida");
