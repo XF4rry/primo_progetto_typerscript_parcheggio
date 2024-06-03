@@ -21,8 +21,6 @@ export class MainMenuView{
                 MainMenuView.stampaMenu();
                 break;
             case 2:
-                console.log(controller.getNumeroVeicoliPresenti());
-                MainMenuView.stampaMenu();
                 break;
             case 9:
                 
