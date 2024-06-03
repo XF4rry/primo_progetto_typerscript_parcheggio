@@ -28,5 +28,9 @@ export class ParcheggiController {
     // faccio il return della lunghezza dell'array perchè il secondo punto mi chiede soltanto di restituire il numero dei veicoli presenti (non i dati)
     return datiParcheggiate.length;
   }
+  addVeicolo(targa: string) : boolean {
+    return true;
+  }
+
 }
 
