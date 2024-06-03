@@ -1,0 +1,11 @@
+Viene utilizzato la struttura MVC (Models, views, controllers)
+i Models definiscono i modelli dei dati e delle informazioni (classi e oggetti)
+i Views sono delle classi che definiscono solo la relazione tra codice e utente (output, creazione e generazione di menu ecc. ecc.)
+Models e Views non sono mai collegati tra loro perchè devono essere per definizione indipendenti tra loro.
+Ed è per questo che entrano in campo i Controllers.
+I Controllers hanno l'unico e importantissimo compito di gestire le richieste dell'utente girando tra Models e Views i risultati. 
+Così che Models e Views non sono mai in contatto diretto, ma esso viene gestito da un Controller esterno.
+Le richieste dell'utente vengono ricevute dalle views, vengono girate ai controller che, presa in carico la richiesta, 
+andranno dai models a gestire ciò che l'utente ha richiesto.
+
+!!EVITA IN OGNI MODO LA DUPLICAZIONE DI CODICE!!
