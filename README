@@ -9,3 +9,5 @@ Le richieste dell'utente vengono ricevute dalle views, vengono girate ai control
 andranno dai models a gestire ciò che l'utente ha richiesto.
 
 !!EVITA IN OGNI MODO LA DUPLICAZIONE DI CODICE!!
+
+--> npm i <-- per scaricare tutte le librerie utili
