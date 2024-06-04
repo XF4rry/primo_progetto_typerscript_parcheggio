@@ -48,10 +48,11 @@ export class MainMenuView{
                 let targaExit = rl.question();
                 let veicolo  = controller.getVeicoloByTarga(targaExit);
                 let importo = controller.calcolaImporto(veicolo);
-                console.log(`veicolo ${veicolo.targa} uscito il ${veicolo.dateExit}, importo a pagare: ${veicolo.importo} €`);
+                console.log(`veicolo ${veicolo.targa} uscito il ${veicolo.dateExit}, importo a pagare: ${importo} €`);
                 MainMenuView.stampaMenu();
                 break;
             case 5:
+
                 break;
             case 9:
                 
